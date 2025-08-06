@@ -6,14 +6,17 @@ from config import setup
 from pymongo import MongoClient
 from selenium.webdriver.chrome.service import Service
 from database import MONGO_URI,MONGO_DB,MONGO_COLLECTION
+'''
 import sys
 sys.tracebacklimit = 0
+'''
 class main(webdriver.Chrome):
     def __init__(self):
         options = setup()
         service = Service(executable_path="/usr/bin/chromedriver")
         super(main, self).__init__(service=service, options=options)
         self.implicitly_wait(15)
+        self.set_page_load_timeout(60)
         self.maximize_window()
     def website(self):
         self.get("https://e.vnexpress.net/")
