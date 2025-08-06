@@ -13,6 +13,7 @@ class main(webdriver.Chrome):
         options = setup()
         service = Service(executable_path="/usr/bin/chromedriver")
         super(main, self).__init__(service=service, options=options)
+        self.implicitly_wait(15)
         self.maximize_window()
     def website(self):
         self.get("https://e.vnexpress.net/")
