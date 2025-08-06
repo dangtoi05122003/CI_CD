@@ -62,6 +62,9 @@ class main(webdriver.Chrome):
             print("-" * 50)
 if __name__ =='__main__':
     app = main()
-    app.website()
-    app.database()
-    app.trend()
+    try:
+        app.website()
+        app.database()
+        app.trend()
+    finally:
+        app.quit()
