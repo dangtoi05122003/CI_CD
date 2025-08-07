@@ -15,16 +15,19 @@ class main(webdriver.Chrome):
         options = setup()
         service = Service(executable_path="/usr/bin/chromedriver")
         super(main, self).__init__(service=service, options=options)
-        self.implicitly_wait(15)
-        self.set_page_load_timeout(60)
+
+
         #self.maximize_window()
+        sleep(5)
     def website(self):
+        self.set_page_load_timeout(150)
         self.get("https://e.vnexpress.net/")
     def database(self):
         client = MongoClient(MONGO_URI)
         db = client[MONGO_DB]
         self.collection = db[MONGO_COLLECTION]
     def trend(self):
+        self.implicitly_wait(15)
         Col_topnews = self.find_element(By.CSS_SELECTOR, '.col-left-topstory.flexbox')
         item_topnews = Col_topnews.find_elements(By.CLASS_NAME, 'item-topstory')
         for item in item_topnews:
