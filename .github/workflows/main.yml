@@ -2,7 +2,7 @@ name: Selenium VNExpress Scraper
 
 on:
   schedule:
-    - cron: '*/7 * * * *'
+    - cron: '*/20 * * * *'
   workflow_dispatch:
   push:
     branches: [master]

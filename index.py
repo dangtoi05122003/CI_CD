@@ -17,7 +17,7 @@ class main(webdriver.Chrome):
         super(main, self).__init__(service=service, options=options)
         self.implicitly_wait(15)
         self.set_page_load_timeout(60)
-        self.maximize_window()
+        #self.maximize_window()
     def website(self):
         self.get("https://e.vnexpress.net/")
     def database(self):
@@ -42,7 +42,7 @@ class main(webdriver.Chrome):
             except:
                 image_url = None
             if not title and not description and not image_url:
-                break
+                continue  
             data = self.collection.find_one({'title': title})
             if data:
                 if not data.get("img") and image_url:
